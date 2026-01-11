@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+      image: ankane/pgvector
+      restart: always
+      environment:
+        POSTGRES_PASSWORD: admin
+  api:
+      build: api/
+      ports:
+        - 8080:8080
+      environment:
+        - PORT=8080
+        - DATABASE_URL=db
+      depends_on:
+        - db
