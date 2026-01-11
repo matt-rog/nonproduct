@@ -6,12 +6,14 @@ services:
       restart: always
       environment:
         POSTGRES_PASSWORD: admin
-  api:
-      build: api/
+      ports:
+      - 5432:5432
+  gateway-api:
+      build: gateway/
       ports:
         - 8080:8080
       environment:
         - PORT=8080
-        - DATABASE_URL=db
+        - DATABASE_URL=postgres://postgres:admin@db/postgres?sslmode=disable
       depends_on:
         - db
