@@ -1,12 +1,10 @@
 package models
 
 import (
-	"time"
-	"github.com/go-pg/v10"
 )
 
 type Company struct {
-	ID		uint	`pg:"id,pk,default:nextval('companies_id_seq')"`
+	ID          uint   `pg:",pk"`
 	Name	string	`pg:"name,notnull"`
 }
 
