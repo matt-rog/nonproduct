@@ -28,6 +28,8 @@ func StartDB() (*pg.DB, error) {
 		&models.Company{},
 		&models.Product{},
 		&models.Quality{},
+		&models.ClaimInstance{},
+		&models.Trace{},
 	}
 
 	for _, m := range models {

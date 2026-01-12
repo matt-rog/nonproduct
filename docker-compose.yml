@@ -8,6 +8,13 @@ services:
         POSTGRES_PASSWORD: admin
       ports:
       - 5432:5432
+      healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+        interval: 10s
+        retries: 5
+        start_period: 30s
+        timeout: 10s
+
   gateway-api:
       build: gateway/
       ports:
@@ -16,4 +23,6 @@ services:
         - PORT=8080
         - DATABASE_URL=postgres://postgres:admin@db/postgres?sslmode=disable
       depends_on:
-        - db
+        db:
+          condition: service_healthy
+          restart: true
