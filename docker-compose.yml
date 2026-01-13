@@ -26,3 +26,11 @@ services:
         db:
           condition: service_healthy
           restart: true
+
+  searxng:
+      image: searxng/searxng:2026.1.11-cf74e1d9e
+      ports:
+        - 8888:8080
+      volumes:
+        - ./searxng/config/:/etc/searxng
+        - ./searxng/data/:/var/cache/searxng
