@@ -1,1 +1,5 @@
 **.internal.txt
+**.venv
+**.env
+**__pycache__
+**.python-version

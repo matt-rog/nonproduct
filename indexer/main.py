@@ -1,15 +1,11 @@
 import argparse
+import entity_resolution
 import search
 
-# ER determines if the query is a product or a company. 
-# If it is a product, it searches for and fills out any missing company information.
-# The new product entity, and any new company entities, are then queued for claim resolution.
-def entity_resolution(query):
-    search.search(query)
 
 def process(query):
-    entities = entity_resolution(query)
-   
+    entities = entity_resolution.resolve(query)
+
 def main():
 
     parser = argparse.ArgumentParser("indexer")
