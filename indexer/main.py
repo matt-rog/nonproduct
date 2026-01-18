@@ -1,10 +1,10 @@
 import argparse
-import entity_resolution
+import preprocessing.entity_resolution
 import search
 
 
 def process(query):
-    entities = entity_resolution.resolve(query)
+    entities = preprocessing.entity_resolution.resolve(query)
 
 def main():
 
