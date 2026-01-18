@@ -1,2 +1,2 @@
 FROM vllm/vllm-openai:latest
-CMD ["--model", "Qwen/Qwen3-0.6B", "--reasoning-parser", "deepseek_r1"]
+CMD ["--model", "Qwen/Qwen3-1.7B", "--reasoning-parser", "deepseek_r1"]
