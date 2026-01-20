@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
 from agent import Agent
+from trace import Trace
 import json
 import search
 
@@ -28,21 +29,16 @@ def resolve(term):
     with open('prompts/entity_classification.md', 'r') as f:
         entity_classification_prompt = f.read().replace("{term}", term).replace("{init_context}", json.dumps(init_context))
 
-    completion = agent.client.chat.completions.create(
-        model=agent.model,
-        messages=[
+    Trace.log("Starting entity classification")
+    response = agent.structured_response(
+        [
             {
                 "role": "user",
                 "content": entity_classification_prompt
             }
         ],
-        response_format={
-            "type": "json_schema",
-            "json_schema": {
-                "name": "entity_classification",
-                "schema": EntityClassificationResponse.model_json_schema()
-            }
-        }
+        EntityClassificationResponse.model_json_schema(),
+        "entity_classification"
     )
-    
-    print(completion.choices[0].message.content)
+
+    print(response)

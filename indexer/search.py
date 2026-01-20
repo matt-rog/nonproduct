@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import requests
 import urllib.robotparser as urobot
 from trafilatura import fetch_url, extract
+from trace import Trace
 import signal
 
 load_dotenv()
@@ -54,5 +55,7 @@ def search(query, pull_text=False):
         "attributes": i["attributes"],
         "publishedDate": i["publishedDate"]
     } for i in resp["infoboxes"]]
+
+    Trace.log([f"search results for {query}", resp])
     
     return resp

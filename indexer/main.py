@@ -1,11 +1,14 @@
 import argparse
 import preprocessing.entity_resolution
 import search
+from trace import Trace
 
 
 def process(query):
+    Trace.start(query)
     entities = preprocessing.entity_resolution.resolve(query)
-
+    Trace.dump()
+    
 def main():
 
     parser = argparse.ArgumentParser("indexer")
