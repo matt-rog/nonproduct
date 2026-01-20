@@ -1,5 +1,6 @@
 import contextvars
 from datetime import datetime
+from pathvalidate import sanitize_filename
 import json
 import os
 
@@ -9,7 +10,7 @@ class Trace():
     )
 
     def __init__(self, id):
-        self.id = f"{str(datetime.now())}-{id}"
+        self.id = f"{str(datetime.now())}-{sanitize_filename(id.replace(" ", "_"))}"
         self.events = []
 
     @classmethod

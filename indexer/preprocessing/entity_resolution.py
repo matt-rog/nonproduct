@@ -13,7 +13,7 @@ class Company(BaseModel):
 
 class EntityClassificationResponse(BaseModel):
     product: Optional[Product]
-    companies: Optional[List[Company]]
+    companies: List[Company]
 
 # ER determines if the query is a product or a company. 
 # If it is a product, it searches for and fills out any missing company information.

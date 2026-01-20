@@ -8,6 +8,7 @@ dependencies = [
     "argparse>=1.4.0",
     "dotenv>=0.9.9",
     "openai>=2.15.0",
+    "pathvalidate>=3.3.1",
     "pydantic>=2.12.5",
     "requests>=2.32.5",
     "trafilatura>=2.0.0",
