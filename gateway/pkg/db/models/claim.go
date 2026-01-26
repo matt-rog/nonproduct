@@ -17,7 +17,7 @@ const (
 
 type Claim struct {
 	ID          uint          `pg:",pk"`
-	QualityIDs  []int64       `pg:"quality_ids,notnull,array"`
+	QualityIDs  []int64       `pg:"quality_ids,notnull,array" yaml:"qualityids"`
 	Code        string        `pg:"code,notnull"`
 	Name        string        `pg:"name,notnull"`
 	Description string        `pg:"description,notnull"`

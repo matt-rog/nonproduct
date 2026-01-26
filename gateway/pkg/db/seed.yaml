@@ -1,0 +1,13 @@
+qualities:
+  - id: 0
+    name: Reliability
+    description: Reliability
+
+claims:
+  - id: 0
+    qualityids: [0]
+    code: PR_0
+    name: Product 0
+    description: Description for PR_0
+    scope: product
+    polarity: positive
