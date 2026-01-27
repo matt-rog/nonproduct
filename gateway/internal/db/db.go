@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"gateway/pkg/db/models"
+	"gateway/internal/db/models"
 
 	"github.com/go-pg/pg/v10"
 	"github.com/go-pg/pg/v10/orm"
@@ -57,7 +57,7 @@ func StartDB() (*pg.DB, error) {
 		fmt.Println(err)
 		return db, err
 	}
-	
+
 	for _, q := range seedData.Qualities {
 		_, err = db.Model(&q).Insert()
 		if err != nil {
